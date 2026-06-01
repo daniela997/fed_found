@@ -42,8 +42,7 @@ The following directories are gitignored and regenerated locally:
 
 - `data/` — torchvision dataset cache (~1.1 GB, auto-downloaded on first use).
 - `fl_results/` — checkpoints, per-run JSONs, training logs, bundled result
-  zips. Trained projector checkpoints can be reproduced from the drivers;
-  the JSON metric files for the paper are released separately (Zenodo).
+  zips. Trained projector checkpoints can be reproduced from the drivers.
 - `figures/` — PDF figures, regenerated from `visualise.ipynb`.
 
 ## Reproducing the experiments
