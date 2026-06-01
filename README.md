@@ -30,14 +30,12 @@ unbalanced Dirichlet partition with α = 0.3.
 ├── fed{CLIP,DINO,TIPS,ResNet}_all_eval.py   # one trainer per backbone
 ├── datasets_extra.py                        # HF dataset registry + adapter
 ├── eval_only.py                             # re-evaluate from a saved projector checkpoint
-├── upload_to_hf.py                          # push an ImageFolder dataset to HuggingFace
 ├── run_table3_all_backbones.sh              # driver: setups (i) + (ii) grid (60 cells)
 ├── run_table4_plankton.sh                   # driver: setup (iii) grid (60 cells)
 ├── run_table4_oom_retry.sh                  # driver: re-run 1/GPU for OOM-prone cells
 ├── aggregate_table3_compare.py              # aggregator for setups (i) + (ii)
 ├── aggregate_table4_plankton.py             # aggregator for setup (iii)
 ├── visualise.ipynb                          # notebook with figures + analysis
-├── hf_upload_configs/                       # YAML configs for HF dataset uploads
 ├── figures/                                 # generated PDF figures for the paper
 └── fl_results/
     ├── table3_jsons.zip                     # all per-run JSONs for setups (i) + (ii)
@@ -135,10 +133,10 @@ python eval_only.py \
 
 Useful when adding a new eval dataset to a grid that's already trained.
 
-## Plankton datasets uploaded to HuggingFace
+## Plankton datasets on HuggingFace
 
-This project uploaded six plankton datasets to the HuggingFace Hub. Configs
-and citations are in `hf_upload_configs/`.
+The six plankton datasets used for setup (iii) are hosted on the HuggingFace
+Hub and loaded on demand via `datasets_extra.py`:
 
 | Dataset | Repo | Classes | Images |
 |---|---|---|---|
@@ -150,8 +148,9 @@ and citations are in `hf_upload_configs/`.
 | DAPlankton-LAB CytoSense | `danielaivanova/daplankton-lab-cs` | 15 | ~13.2k |
 | DAPlankton-LAB FlowCam | `danielaivanova/daplankton-lab-fc` | 15 | ~17.8k |
 
-To upload a new ImageFolder-format dataset, copy a YAML in
-`hf_upload_configs/` and run `python upload_to_hf.py path/to/config.yaml`.
+All seven (including the WCO in-domain training set) use a per-class 60/20/20
+train/validation/test split with random seed 24, except SYKE-ZooScan which
+ships predefined splits with 5 test-only classes for open-set evaluation.
 
 ## Figures
 

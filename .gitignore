@@ -40,8 +40,11 @@ fl_results/*.out
 fl_results/archive_*/
 
 # ============================================================
-# HuggingFace upload logs (transient)
+# HuggingFace upload tooling (kept on disk; not part of the
+# published repo since the datasets are already on the HF Hub)
 # ============================================================
+upload_to_hf.py
+hf_upload_configs/
 hf_upload_logs/
 
 # ============================================================
