@@ -1,0 +1,50 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ============================================================
+# Local environments / OS
+# ============================================================
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# Dataset caches (regeneratable: torchvision auto-downloads;
+# Tiny-ImageNet via prepare_tiny_imagenet.py)
+# ============================================================
+data/
+
+# ============================================================
+# Trained projector checkpoints (~230 MB; regenerate by re-running
+# the federated grids via run_table3_all_backbones.sh / run_table4_plankton.sh)
+# ============================================================
+fl_results/checkpoints/
+
+# ============================================================
+# Intermediate/transient FL outputs
+# ============================================================
+# Loose per-run JSONs (bundled into fl_results/table*_jsons.zip)
+fl_results/fed_unsup_simclr_*.json
+# Driver stdout/stderr captures (transient; per-run logs are in the table*_logs/ dirs)
+fl_results/*.out
+fl_results/archive_*/
+
+# ============================================================
+# HuggingFace upload logs (transient)
+# ============================================================
+hf_upload_logs/
+
+# ============================================================
+# Notebook output bloat (re-render locally)
+# ============================================================
+# Strip with: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace visualise.ipynb

@@ -1,0 +1,137 @@
+# WCO L4 Annotated IFCB Training Library upload config.
+#
+# Source: Widdicombe, C. (2026). WCO L4 Annotated IFCB Training Library --
+#   Western English Channel, UK (1.2) [Data set]. Zenodo.
+#   https://doi.org/10.5281/zenodo.20412178
+#
+# Local data: /scratch/daniela/DEAL/Plankton/WCO_L4_IFCB_PML
+# ImageFolder layout: 213 class dirs, 90,716 PNGs total.
+#
+# Split protocol: 60% train / 20% validation / 20% test, per-class shuffle
+# with random seed 24. Matches the SYKE-IFCB / DAPlankton / PlanktoShare
+# upload protocols for consistency across this collection of HF uploads.
+#
+# Small-class handling: 13 classes have fewer than 5 images each (~25 images
+# total, <0.03% of the dataset). These are dropped via min_N=5 so the
+# 60/20/20 split can land at least one image in each split for every class.
+# Final dataset: ~200 classes, ~90,690 images.
+
+# ============================================================
+# REQUIRED
+# ============================================================
+data_dir: /scratch/daniela/DEAL/Plankton/WCO_L4_IFCB_PML
+
+hf_dataset_name: wco-l4-ifcb-pml
+hf_org_name: danielaivanova
+
+# ============================================================
+# SPLIT PROTOCOL
+# ============================================================
+split_ratios: [0.6, 0.2, 0.2]
+split_random_seed: 24
+min_N: 5
+
+# ============================================================
+# METADATA
+# ============================================================
+pretty_name: "WCO L4 Annotated IFCB Training Library"
+
+description: |
+  Imaging FlowCytobot (IFCB) plankton image library from the Western Channel
+  Observatory (WCO) station L4, in the Western English Channel, UK. Maintained
+  and annotated by Plymouth Marine Laboratory (PML). The full release contains
+  approximately 90,700 expert-labeled single-specimen PNG images across ~200
+  classes spanning diatoms, dinoflagellates, coccolithophores, ciliates,
+  silicoflagellates, cryptophytes, copepod nauplii, detritus, beads, and other
+  classes commonly observed at WCO L4 (50.250 deg N, 4.217 deg W).
+
+  This HuggingFace release ships the dataset in a standard ImageFolder layout
+  with **predefined train / validation / test splits** so downstream code can
+  reproduce a fixed splitting protocol without re-implementing it:
+
+    - Per-class shuffle with random seed 24
+    - 60% train / 20% validation / 20% test
+    - min_N=5 (drop classes with fewer than 5 images so every split contains
+      at least one example per class)
+
+  Each row contains `image` (PIL.Image PNG) and `label` (HuggingFace
+  ClassLabel, ~200 classes).
+
+  ## Preparation notes
+
+  - The original Zenodo release contains 213 class directories; 13 of these
+    have fewer than 5 images (~25 images total). These were excluded so the
+    per-class 60/20/20 split is well-defined.
+  - Image filenames retain the original IFCB capture convention
+    `D<YYYYMMDD>T<HHMMSS>_IFCB<instrument-id>_<roi-id>.png`, which encodes
+    sample timestamp and ROI identifier for users who want to join with the
+    original WCO/PML sample-level metadata.
+
+  ## Imaging instrument and site
+
+  All images were captured by an Imaging FlowCytobot (IFCB; McLane Research
+  Laboratories; Olson and Sosik 2007), deployed at Western Channel Observatory
+  station L4 (English Channel, UK). The Western Channel Observatory is
+  operated by Plymouth Marine Laboratory and the Marine Biological Association
+  of the UK.
+
+  ## Citation
+
+  Widdicombe, C. (2026). WCO L4 Annotated IFCB Training Library -- Western
+  English Channel, UK (1.2) [Data set]. Zenodo.
+  https://doi.org/10.5281/zenodo.20412178
+
+# Source-data license (Zenodo default for this record).
+license: cc-by-4.0
+
+source_url: "https://doi.org/10.5281/zenodo.20412178"
+
+citation_apa: |
+  Widdicombe, C. (2026). WCO L4 Annotated IFCB Training Library -- Western
+  English Channel, UK (1.2) [Data set]. Zenodo.
+  https://doi.org/10.5281/zenodo.20412178
+
+citation_bibtex: |
+  @dataset{widdicombe2026wco_l4_ifcb,
+    author    = {Widdicombe, Claire},
+    title     = {WCO L4 Annotated IFCB Training Library --
+                 Western English Channel, UK},
+    version   = {1.2},
+    year      = {2026},
+    publisher = {Zenodo},
+    doi       = {10.5281/zenodo.20412178}
+  }
+
+paperswithcode_id: ""
+arxiv_id: ""
+
+# ============================================================
+# BEHAVIOR
+# ============================================================
+hf_private: true
+num_proc: 8
+push_to_hub_retries: 5
+check_image_file_integrity: false
+
+# ============================================================
+# DATASET CARD TAGS
+# ============================================================
+task_categories:
+  - image-classification
+task_ids:
+  - multi-class-image-classification
+annotations_creators:
+  - expert-generated
+language:
+  - en
+tags:
+  - plankton
+  - phytoplankton
+  - microscopy
+  - ifcb
+  - imaging-flowcytobot
+  - english-channel
+  - western-channel-observatory
+  - oceanography
+  - marine-biology
+  - fine-grained-classification

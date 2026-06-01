@@ -1,0 +1,171 @@
+# PlanktoShare upload config.
+#
+# Source: Van Walraven et al. (submitted, "PlanktoShare: A large (50k+) and FAIR
+#         learning set for the Plankton Imager (Pi-10) for the Greater North Sea
+#         and NE Atlantic, based on a new flexible classification protocol.")
+# Local source:
+#   /scratch/daniela/DEAL/Plankton/plankto-share/PlanktoShare/*.tif  (53,325 TIFs)
+#   /scratch/daniela/DEAL/Plankton/plankto-share/PlanktoShare_labels.csv  (52,882 rows)
+# Local ImageFolder (PNG-converted, after `scripts/build_plankto_share_imagefolder.py`):
+#   /scratch/daniela/DEAL/Plankton/plankto-share/PlanktoShare_imagefolder/<customName>/<imageID>.png
+#
+# Preparation:
+#   - TIFs were converted to PNG (lossless) since images are very small (often
+#     <200x200 px); JPEG would introduce visible artefacts at this resolution.
+#   - 443 TIFs in the original zip had no CSV label entry; they were dropped.
+#   - Class = `customName` column (expert-assigned label, 132 unique values
+#     populated for all CSV rows). The richer aphiaName / aphiaID / lat-lon /
+#     instrument metadata is preserved in the original CSV for users who want it.
+#
+# Split protocol: 60% train / 20% validation / 20% test, per-class shuffle with
+# random seed 24. Matches the SYKE-IFCB and DAPlankton_LAB upload protocols for
+# consistency across this collection of HF uploads.
+#
+# Small-class handling: 21 customName classes have fewer than 5 images each
+# (40 images total, <0.1% of the dataset). These are dropped via min_N=5 so
+# the 60/20/20 split can land at least one image in each split for every class.
+# Final dataset: 111 classes, 52,842 images.
+
+# ============================================================
+# REQUIRED
+# ============================================================
+data_dir: /scratch/daniela/DEAL/Plankton/plankto-share/PlanktoShare_imagefolder
+
+hf_dataset_name: plankto-share
+hf_org_name: danielaivanova
+
+# ============================================================
+# SPLIT PROTOCOL
+# ============================================================
+split_ratios: [0.6, 0.2, 0.2]
+split_random_seed: 24
+min_N: 5
+
+# ============================================================
+# METADATA
+# ============================================================
+pretty_name: "PlanktoShare"
+
+description: |
+  PlanktoShare is a large, expert-labeled learning set of plankton, detritus,
+  and other particle images captured with the Pi-10 Plankton Imager (Plankton
+  Analytics) in the Greater North Sea and Northeast Atlantic, on board the
+  research vessels Tridens II (WMR) and CEFAS Endeavour (CEFAS). The original
+  release contains 53,325 small RGB images in TIFF format and a companion CSV
+  with rich per-image metadata (taxonomic identifier, life stage, body part,
+  shape descriptor, vessel position, and instrument serial number).
+
+  This HuggingFace release ships **PNG-converted** images in a standard
+  ImageFolder layout, with the expert-assigned `customName` field used as the
+  classification label. The original TIFs were converted losslessly to PNG to
+  preserve the small (often <200x200 px) images without JPEG artefacts. Each
+  row contains `image` (PIL.Image PNG) and `label` (HuggingFace ClassLabel,
+  111 classes).
+
+  **Preparation notes:**
+
+    - 443 TIFs in the original zip had no entry in the labels CSV; these were
+      dropped.
+    - Classes with fewer than 5 images (21 classes, 40 images total, <0.1% of
+      the data) were excluded so per-class 60/20/20 splits can place at least
+      one image in each split. The final dataset has 111 classes.
+    - Predefined train / validation / test splits are provided so downstream
+      code can reproduce a fixed splitting protocol without re-implementing it:
+
+        - Per-class shuffle with random seed 24
+        - 60% train / 20% validation / 20% test
+        - min_N=5 (drop classes smaller than 5 images)
+
+  ## Label hierarchy and richer metadata
+
+  The original CSV provides several label columns at different granularities:
+
+    - `group`        : 3 coarse classes (Organism / Taxo_particle / Non_taxo_particle)
+    - `aphiaName`    : 90 taxonomic classes (WoRMS-aligned; NaN for non-taxonomic
+                       particles such as bubbles and detritus)
+    - `customName`   : 132 expert-assigned classes; fully populated (used here)
+
+  This release only carries `customName` as the HF `label`. Users who want the
+  taxonomic identifier, latitude/longitude, life stage, or shape descriptors
+  should download the original CSV (`PlanktoShare_labels.csv`) from the source
+  release and join on `imageID` (the PNG basename here matches the TIFF stem).
+
+  ## Imaging instrument
+
+  All images were captured with the Pi-10 Plankton Imager from Plankton
+  Analytics. Two operating organisations are represented:
+
+    - WMR  (Wageningen Marine Research, Netherlands) -- Pi10_06 instrument
+    - CEFAS (Centre for Environment, Fisheries and Aquaculture Science, UK)
+
+  ## Citation
+
+  Van Walraven, L., Scott, J., Pitois, S., Ribeiro, J., Close, H., Liszka,
+  C. M., Fileman, E., Hoekendijk, J., Hovenkamp, P., Jak, R., van Dalen, J.,
+  & van Oevelen, D. PlanktoShare: A large (50k+) and FAIR learning set for the
+  Plankton Imager (Pi-10) for the Greater North Sea and NE Atlantic, based on
+  a new flexible classification protocol. (Submitted.)
+
+# Source-data license: the original release does not state a license; treat as
+# all-rights-reserved unless / until the authors publish under a permissive
+# license. The HF mirror is uploaded as private and should not be redistributed
+# until license terms are confirmed.
+license: other
+
+# The submitted paper does not yet have a public landing page; update this
+# field if a DOI or arXiv ID becomes available.
+source_url: ""
+
+citation_apa: |
+  Van Walraven, L., Scott, J., Pitois, S., Ribeiro, J., Close, H., Liszka,
+  C. M., Fileman, E., Hoekendijk, J., Hovenkamp, P., Jak, R., van Dalen, J.,
+  & van Oevelen, D. PlanktoShare: A large (50k+) and FAIR learning set for the
+  Plankton Imager (Pi-10) for the Greater North Sea and NE Atlantic, based on
+  a new flexible classification protocol. (Submitted.)
+
+citation_bibtex: |
+  @unpublished{vanwalraven_planktoshare,
+    title  = {PlanktoShare: A large (50k+) and FAIR learning set for the
+              Plankton Imager (Pi-10) for the Greater North Sea and NE
+              Atlantic, based on a new flexible classification protocol},
+    author = {Van Walraven, Lodewijk and Scott, James and Pitois, Sophie and
+              Ribeiro, Joseph and Close, Hayden and Liszka, Cecilia M. and
+              Fileman, Elaine and Hoekendijk, Jeroen and Hovenkamp, Pieter and
+              Jak, Robbert and van Dalen, Joost and van Oevelen, Dick},
+    note   = {Submitted}
+  }
+
+paperswithcode_id: ""
+arxiv_id: ""
+
+# ============================================================
+# BEHAVIOR
+# ============================================================
+hf_private: true
+num_proc: 8
+push_to_hub_retries: 5
+check_image_file_integrity: false
+
+# ============================================================
+# DATASET CARD TAGS
+# ============================================================
+task_categories:
+  - image-classification
+task_ids:
+  - multi-class-image-classification
+annotations_creators:
+  - expert-generated
+language:
+  - en
+tags:
+  - plankton
+  - zooplankton
+  - phytoplankton
+  - microscopy
+  - plankton-imager
+  - pi-10
+  - north-sea
+  - ne-atlantic
+  - oceanography
+  - marine-biology
+  - fine-grained-classification

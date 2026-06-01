@@ -1,0 +1,2 @@
+Loading checkpoint: /home/daniela/mine/fedDINO/fl_results/checkpoints/projector_resnet18_cifar10_resnet18_200C_5pct_seed17_20260526_192730.pt
+Unknown backbone family in tag 'resnet18'. Expected prefix in ['clip', 'dino', 'resnet', 'tips'].

@@ -1,0 +1,619 @@
+Device: cuda
+Configuration: {'dataset': 'wco_l4_ifcb_pml', 'tips_model': 'google/tipsv2-b14', 'projection_dim': 128, 'image_size': 224, 'num_clients': 2000, 'client_frac': 0.01, 'rounds': 20, 'local_epochs': 5, 'batch_size': 128, 'lr': 0.0001, 'wd': 0.0001, 'grad_clip': 1.0, 'linear_lr': 0.001, 'linear_wd': 0.0001, 'linear_bs': 256, 'linear_epochs': 50, 'linear_patience': 10, 'dirichlet_alpha': 0.3, 'balanced_partition': False, 'normalization': 'none', 'seed': 1, 'backbone_tag': 'tips_b14', 'run_name': 'tips_b14_2000C_1pct_seed1', 'verbose': False, 'progress_every': 20, 'eval_every': 0, 'save_test_embeddings': False, 'cpu': False, 'eval_datasets': ['wco_l4_ifcb_pml', 'syke_ifcb', 'syke_zooscan', 'plankto_share', 'daplankton_lab_ifcb', 'daplankton_lab_cs', 'daplankton_lab_fc'], 'tiny_root': './tiny', 'celeba_root': './celeba', 'device': device(type='cuda')}
+Loading TIPS backbone (google/tipsv2-b14)...
+Loading weights:   0%|          | 0/323 [00:00<?, ?it/s]Loading weights: 100%|██████████| 323/323 [00:00<00:00, 10371.29it/s]
+TIPS feature dim (mean-pool all tokens): 768
+Using Dirichlet alpha=0.3 for non-IID partition...
+Using imbalanced Dirichlet partition
+Starting federated unsupervised SimCLR (CLIP backbone)...
+
+--- Round 1/20 ---
+Client 275: 3.3393
+Client 1165: 3.5520
+Client 1735: 3.2413
+Client 1643: 3.8473
+Client 1564: 4.0432
+Client 129: 3.6773
+Client 522: 3.8949
+Client 241: 3.9253
+Client 1014: 3.6749
+Client 1558: 3.7045
+Client 920: 4.0356
+Client 967: 3.5959
+Client 1334: 3.4891
+Client 777: 4.1687
+Client 1615: 4.0086
+Client 429: 3.5663
+Client 192: 3.8742
+Client 999: 3.5580
+Client 58: 3.2519
+Client 1829: 3.4624
+Round avg loss: 3.6955 (Best: 3.6955)
+
+--- Round 2/20 ---
+Client 1711: 4.1399
+Client 798: 3.6056
+Client 886: 3.4453
+Client 1244: 3.8158
+Client 1561: 3.0669
+Client 1571: 3.5928
+Client 4: 2.9584
+Client 1425: 3.6406
+Client 912: 3.2470
+Client 545: 3.4627
+Client 1477: 4.0298
+Client 1642: 3.5648
+Client 468: 3.9368
+Client 1210: 3.6112
+Client 1935: 3.9096
+Client 209: 3.3977
+Client 1846: 3.4648
+Client 650: 4.0406
+Client 62: 3.8065
+Client 45: 4.0323
+Round avg loss: 3.6384 (Best: 3.6384)
+
+--- Round 3/20 ---
+Client 52: 3.9425
+Client 1330: 3.6320
+Client 1108: 3.2468
+Client 18: 3.6771
+Client 1923: 3.3053
+Client 1804: 4.4345
+Client 780: 3.8924
+Client 1405: 4.0550
+Client 443: 2.8683
+Client 1984: 3.0541
+Client 864: 3.5632
+Client 1486: 3.1144
+Client 59: 3.8020
+Client 1080: 3.7475
+Client 454: 3.4907
+Client 1564: 3.8173
+Client 896: 3.5681
+Client 1015: 3.5888
+Client 1132: 3.7964
+Client 477: 3.5171
+Round avg loss: 3.6057 (Best: 3.6057)
+
+--- Round 4/20 ---
+Client 707: 3.7126
+Client 472: 3.6102
+Client 1386: 3.7110
+Client 448: 3.4348
+Client 1558: 3.4462
+Client 941: 3.9575
+Client 1950: 3.4901
+Client 593: 3.5703
+Client 1897: 3.9456
+Client 44: 3.8351
+Client 852: 3.8030
+Client 1715: 4.0172
+Client 1876: 3.9617
+Client 1139: 3.6866
+Client 1888: 4.2068
+Client 1315: 3.5677
+Client 204: 4.2605
+Client 380: 3.5442
+Client 1288: 3.9389
+Client 1482: 3.8278
+Round avg loss: 3.7764 (Best: 3.6057)
+
+--- Round 5/20 ---
+Client 1761: 3.5913
+Client 607: 3.6061
+Client 247: 3.8501
+Client 1521: 3.6120
+Client 681: 3.7377
+Client 1834: 4.1708
+Client 1477: 3.7208
+Client 1993: 3.6167
+Client 1456: 3.2809
+Client 1025: 4.0621
+Client 1917: 3.3178
+Client 1980: 3.4057
+Client 864: 3.3180
+Client 1039: 3.6994
+Client 1699: 4.1628
+Client 1864: 3.4217
+Client 1372: 3.4751
+Client 388: 3.7059
+Client 621: 3.7984
+Client 581: 3.6746
+Round avg loss: 3.6614 (Best: 3.6057)
+
+--- Round 6/20 ---
+Client 1203: 3.3818
+Client 1993: 3.3964
+Client 1807: 3.5794
+Client 1022: 3.8690
+Client 1733: 3.5502
+Client 1926: 3.9374
+Client 1034: 3.6697
+Client 805: 3.8356
+Client 1206: 3.6279
+Client 1747: 3.4730
+Client 70: 3.9114
+Client 983: 3.4970
+Client 497: 3.2629
+Client 1523: 2.8955
+Client 1633: 3.5733
+Client 827: 3.9669
+Client 848: 3.9376
+Client 1361: 3.7019
+Client 354: 3.6540
+Client 751: 3.7566
+Round avg loss: 3.6239 (Best: 3.6057)
+
+--- Round 7/20 ---
+Client 1123: 3.4842
+Client 1807: 3.3480
+Client 1439: 3.6697
+Client 1588: 3.1614
+Client 1381: 3.5409
+Client 1511: 3.7881
+Client 767: 3.9386
+Client 177: 3.3129
+Client 898: 3.1388
+Client 1359: 3.5322
+Client 1041: 3.4770
+Client 221: 3.3440
+Client 1594: 3.7367
+Client 335: 3.6252
+Client 1066: 3.4705
+Client 1720: 3.3817
+Client 805: 3.6026
+Client 758: 4.2049
+Client 1002: 3.6721
+Client 1500: 3.2001
+Round avg loss: 3.5315 (Best: 3.5315)
+
+--- Round 8/20 ---
+Client 60: 3.1725
+Client 961: 3.3113
+Client 89: 3.8879
+Client 631: 3.5110
+Client 1440: 3.3831
+Client 1737: 3.7256
+Client 1259: 3.4951
+Client 1214: 3.8193
+Client 1184: 3.6333
+Client 806: 3.3237
+Client 1325: 3.5565
+Client 348: 3.5703
+Client 345: 3.4778
+Client 1028: 3.1571
+Client 464: 4.1511
+Client 25: 3.1259
+Client 1578: 3.6832
+Client 408: 3.4026
+Client 1105: 3.6743
+Client 1884: 3.7643
+Round avg loss: 3.5413 (Best: 3.5315)
+
+--- Round 9/20 ---
+Client 1761: 3.3693
+Client 1122: 3.8981
+Client 475: 3.2653
+Client 828: 3.2500
+Client 1052: 3.7212
+Client 704: 3.3840
+Client 1950: 3.2557
+Client 1735: 2.9957
+Client 1183: 3.8052
+Client 723: 3.7336
+Client 940: 3.8886
+Client 1863: 3.6591
+Client 551: 3.7400
+Client 1350: 3.5696
+Client 1247: 3.2523
+Client 1960: 3.7822
+Client 1493: 3.7741
+Client 11: 3.6788
+Client 785: 3.6546
+Client 1604: 4.2510
+Round avg loss: 3.5964 (Best: 3.5315)
+
+--- Round 10/20 ---
+Client 1755: 3.7185
+Client 1680: 3.6923
+Client 1955: 3.6841
+Client 1814: 3.9186
+Client 1921: 3.9329
+Client 1516: 3.5300
+Client 1049: 3.0939
+Client 1657: 3.5125
+Client 264: 4.1048
+Client 1062: 3.6206
+Client 1592: 3.6799
+Client 1149: 3.1942
+Client 420: 3.7129
+Client 872: 3.5990
+Client 1945: 3.6283
+Client 114: 3.4601
+Client 985: 3.0017
+Client 1781: 3.8446
+Client 746: 3.4108
+Client 1167: 3.7474
+Round avg loss: 3.6044 (Best: 3.5315)
+
+--- Round 11/20 ---
+Client 1135: 3.7100
+Client 409: 3.1448
+Client 1927: 3.4004
+Client 1033: 3.2621
+Client 846: 3.3781
+Client 993: 3.8015
+Client 1665: 3.9242
+Client 730: 3.6848
+Client 848: 3.6864
+Client 708: 4.2214
+Client 3: 3.1444
+Client 1102: 3.3611
+Client 1106: 3.8554
+Client 1276: 3.7209
+Client 1610: 3.3115
+Client 1254: 3.6376
+Client 678: 3.2438
+Client 938: 3.6056
+Client 1228: 3.3710
+Client 57: 3.7413
+Round avg loss: 3.5603 (Best: 3.5315)
+
+--- Round 12/20 ---
+Client 1647: 3.6949
+Client 470: 2.9588
+Client 1301: 3.7197
+Client 362: 3.2668
+Client 1127: 3.5292
+Client 1196: 3.2691
+Client 370: 3.1021
+Client 1763: 3.7278
+Client 187: 3.5411
+Client 1635: 3.7508
+Client 1128: 4.2166
+Client 1632: 3.5584
+Client 1743: 3.5514
+Client 1672: 3.5422
+Client 1906: 3.5535
+Client 522: 3.6062
+Client 66: 3.1849
+Client 1723: 3.6356
+Client 1932: 3.5317
+Client 1378: 3.1711
+Round avg loss: 3.5056 (Best: 3.5056)
+
+--- Round 13/20 ---
+Client 144: 3.3788
+Client 170: 4.2455
+Client 1777: 4.0558
+Client 34: 3.5952
+Client 927: 3.4280
+Client 29: 3.3087
+Client 1544: 3.6920
+Client 1547: 4.1463
+Client 575: 4.0157
+Client 511: 3.4841
+Client 550: 3.7018
+Client 224: 3.6178
+Client 1632: 3.3575
+Client 1279: 3.3735
+Client 378: 3.8445
+Client 705: 3.7557
+Client 594: 3.3563
+Client 142: 3.8825
+Client 342: 4.0264
+Client 326: 3.5820
+Round avg loss: 3.6924 (Best: 3.5056)
+
+--- Round 14/20 ---
+Client 522: 3.4626
+Client 1080: 3.4886
+Client 1949: 3.9222
+Client 344: 3.5270
+Client 1344: 3.4872
+Client 558: 3.5925
+Client 1327: 3.3668
+Client 1457: 3.4982
+Client 603: 3.6690
+Client 931: 3.5839
+Client 1438: 3.7530
+Client 659: 3.6182
+Client 1016: 3.3836
+Client 970: 3.6845
+Client 233: 3.5046
+Client 48: 3.9944
+Client 638: 4.1210
+Client 791: 3.9324
+Client 703: 3.1767
+Client 862: 3.6171
+Round avg loss: 3.6192 (Best: 3.5056)
+
+--- Round 15/20 ---
+Client 1630: 3.3509
+Client 385: 3.8555
+Client 529: 3.5114
+Client 222: 3.4454
+Client 519: 3.4959
+Client 1842: 3.1717
+Client 1495: 3.5122
+Client 1044: 3.4775
+Client 428: 4.0640
+Client 1977: 3.6948
+Client 1240: 3.7314
+Client 884: 3.3935
+Client 1673: 3.9191
+Client 1997: 2.5397
+Client 42: 3.4322
+Client 461: 3.7799
+Client 36: 3.2941
+Client 813: 3.8902
+Client 299: 3.6231
+Client 72: 3.5875
+Round avg loss: 3.5385 (Best: 3.5056)
+
+--- Round 16/20 ---
+Client 1472: 3.7225
+Client 1965: 4.1086
+Client 328: 3.8207
+Client 912: 3.0057
+Client 1443: 3.5079
+Client 1036: 3.5554
+Client 1388: 3.8066
+Client 873: 3.5568
+Client 1115: 3.6663
+Client 1704: 3.5136
+Client 451: 3.6410
+Client 1998: 2.8670
+Client 1291: 3.2639
+Client 1633: 3.3079
+Client 1423: 3.3263
+Client 1057: 3.6500
+Client 923: 3.8192
+Client 457: 4.1730
+Client 1072: 3.7258
+Client 1328: 3.1678
+Round avg loss: 3.5603 (Best: 3.5056)
+
+--- Round 17/20 ---
+Client 62: 3.5585
+Client 808: 4.0319
+Client 1382: 4.0997
+Client 1179: 3.0181
+Client 1645: 3.5412
+Client 657: 3.7342
+Client 1351: 3.7584
+Client 1292: 3.4484
+Client 873: 3.2794
+Client 120: 3.0194
+Client 1510: 3.7512
+Client 611: 3.7685
+Client 257: 3.9545
+Client 1982: 3.6613
+Client 434: 3.1191
+Client 1793: 3.3285
+Client 97: 3.7382
+Client 627: 3.8725
+Client 144: 3.1693
+Client 1758: 4.0565
+Round avg loss: 3.5954 (Best: 3.5056)
+
+--- Round 18/20 ---
+Client 156: 3.9710
+Client 635: 3.8439
+Client 1878: 3.6530
+Client 1923: 3.0456
+Client 610: 3.8699
+Client 1523: 2.6873
+Client 324: 3.7801
+Client 852: 3.5615
+Client 1156: 3.6832
+Client 516: 3.8993
+Client 267: 3.1774
+Client 17: 3.2535
+Client 1148: 3.4188
+Client 1799: 3.8465
+Client 1741: 3.8172
+Client 77: 3.2887
+Client 1209: 3.3390
+Client 1678: 3.8823
+Client 445: 3.6178
+Client 1970: 3.7406
+Round avg loss: 3.5688 (Best: 3.5056)
+
+--- Round 19/20 ---
+Client 1844: 3.6252
+Client 1167: 3.5097
+Client 943: 3.8392
+Client 351: 3.2982
+Client 1695: 3.4043
+Client 1777: 3.8263
+Client 1781: 3.6208
+Client 1994: 3.5060
+Client 1597: 3.7069
+Client 1441: 3.5688
+Client 1275: 3.3107
+Client 1042: 4.2473
+Client 76: 3.8336
+Client 774: 3.6892
+Client 410: 3.5615
+Client 710: 3.5105
+Client 202: 3.5701
+Client 421: 4.1349
+Client 1174: 3.7487
+Client 1380: 3.6680
+Round avg loss: 3.6590 (Best: 3.5056)
+
+--- Round 20/20 ---
+Client 1836: 3.5633
+Client 886: 3.2538
+Client 1211: 3.3812
+Client 397: 3.6599
+Client 1008: 3.4158
+Client 213: 3.8730
+Client 1920: 3.0987
+Client 1363: 3.6843
+Client 798: 3.3954
+Client 606: 3.7150
+Client 1032: 3.5283
+Client 1023: 3.4238
+Client 35: 3.3623
+Client 666: 3.8501
+Client 1253: 3.5872
+Client 1785: 3.4721
+Client 823: 3.5926
+Client 1842: 2.9281
+Client 576: 3.2578
+Client 37: 3.4558
+Round avg loss: 3.4749 (Best: 3.4749)
+Projector checkpoint saved to fl_results/checkpoints/projector_tips_b14_wco_l4_ifcb_pml_tips_b14_2000C_1pct_seed1_20260528_165112.pt
+
+Running final evaluations...
+
+>>> Evaluating on 'wco_l4_ifcb_pml' <<<
+[wco_l4_ifcb_pml] Linear split: 43525 train, 10882 val, 18135 test
+Linear Epoch 5: Train Loss=1.4725, Val Acc=69.65%
+Linear Epoch 10: Train Loss=1.0007, Val Acc=77.15%
+Linear Epoch 15: Train Loss=0.8286, Val Acc=79.96%
+Linear Epoch 20: Train Loss=0.7418, Val Acc=81.50%
+Linear Epoch 25: Train Loss=0.6932, Val Acc=82.49%
+Linear Epoch 30: Train Loss=0.6629, Val Acc=82.95%
+Linear Epoch 35: Train Loss=0.6433, Val Acc=83.21%
+Linear Epoch 40: Train Loss=0.6266, Val Acc=83.50%
+Linear Epoch 45: Train Loss=0.6170, Val Acc=83.73%
+Linear Epoch 50: Train Loss=0.6070, Val Acc=83.97%
+[wco_l4_ifcb_pml] Linear accuracy: 83.76% | Val accuracy: 83.97%
+[wco_l4_ifcb_pml] Eval-only accuracy: 0.54%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 81.09%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 31.01%
+Silhouette score: 0.063
+Prototype accuracy: 64.74%
+
+>>> Evaluating on 'syke_ifcb' <<<
+[syke_ifcb] Linear split: 30272 train, 7568 val, 12618 test
+Linear Epoch 5: Train Loss=0.9044, Val Acc=80.44%
+Linear Epoch 10: Train Loss=0.5703, Val Acc=86.35%
+Linear Epoch 15: Train Loss=0.4441, Val Acc=88.64%
+Linear Epoch 20: Train Loss=0.3769, Val Acc=89.81%
+Linear Epoch 25: Train Loss=0.3360, Val Acc=90.49%
+Linear Epoch 30: Train Loss=0.3090, Val Acc=90.94%
+Linear Epoch 35: Train Loss=0.2892, Val Acc=91.27%
+Linear Epoch 40: Train Loss=0.2759, Val Acc=91.62%
+Linear Epoch 45: Train Loss=0.2645, Val Acc=91.83%
+Linear Epoch 50: Train Loss=0.2560, Val Acc=91.86%
+[syke_ifcb] Linear accuracy: 92.71% | Val accuracy: 91.91%
+[syke_ifcb] Eval-only accuracy: 0.72%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 90.07%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 34.09%
+Silhouette score: 0.075
+Prototype accuracy: 68.25%
+
+>>> Evaluating on 'syke_zooscan' <<<
+[syke_zooscan] Linear split: 10896 train, 2724 val, 4597 test
+Linear Epoch 5: Train Loss=1.1005, Val Acc=75.66%
+Linear Epoch 10: Train Loss=0.7622, Val Acc=81.68%
+Linear Epoch 15: Train Loss=0.6044, Val Acc=84.69%
+Linear Epoch 20: Train Loss=0.5118, Val Acc=86.56%
+Linear Epoch 25: Train Loss=0.4508, Val Acc=87.81%
+Linear Epoch 30: Train Loss=0.4061, Val Acc=88.95%
+Linear Epoch 35: Train Loss=0.3724, Val Acc=89.68%
+Linear Epoch 40: Train Loss=0.3468, Val Acc=90.38%
+Linear Epoch 45: Train Loss=0.3262, Val Acc=90.90%
+Linear Epoch 50: Train Loss=0.3086, Val Acc=91.26%
+[syke_zooscan] Linear accuracy: 90.04% | Val accuracy: 91.26%
+[syke_zooscan] Eval-only accuracy: 2.00%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 89.38%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 28.50%
+Silhouette score: 0.065
+Prototype accuracy: 68.63%
+
+>>> Evaluating on 'plankto_share' <<<
+[plankto_share] Linear split: 25363 train, 6341 val, 10572 test
+Linear Epoch 5: Train Loss=2.3758, Val Acc=45.17%
+Linear Epoch 10: Train Loss=1.8217, Val Acc=55.50%
+Linear Epoch 15: Train Loss=1.5690, Val Acc=59.33%
+Linear Epoch 20: Train Loss=1.4306, Val Acc=61.96%
+Linear Epoch 25: Train Loss=1.3342, Val Acc=63.27%
+Linear Epoch 30: Train Loss=1.2720, Val Acc=64.31%
+Linear Epoch 35: Train Loss=1.2257, Val Acc=65.19%
+Linear Epoch 40: Train Loss=1.1865, Val Acc=65.70%
+Linear Epoch 45: Train Loss=1.1577, Val Acc=66.46%
+Linear Epoch 50: Train Loss=1.1351, Val Acc=66.72%
+[plankto_share] Linear accuracy: 68.38% | Val accuracy: 66.74%
+[plankto_share] Eval-only accuracy: 0.56%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 63.88%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 22.89%
+Silhouette score: 0.032
+Prototype accuracy: 43.80%
+
+>>> Evaluating on 'daplankton_lab_ifcb' <<<
+[daplankton_lab_ifcb] Linear split: 7909 train, 1978 val, 3294 test
+Linear Epoch 5: Train Loss=1.4785, Val Acc=74.57%
+Linear Epoch 10: Train Loss=1.0266, Val Acc=80.33%
+Linear Epoch 15: Train Loss=0.8114, Val Acc=82.56%
+Linear Epoch 20: Train Loss=0.6838, Val Acc=84.93%
+Linear Epoch 25: Train Loss=0.5983, Val Acc=85.74%
+Linear Epoch 30: Train Loss=0.5371, Val Acc=87.21%
+Linear Epoch 35: Train Loss=0.4903, Val Acc=87.87%
+Linear Epoch 40: Train Loss=0.4535, Val Acc=88.83%
+Linear Epoch 45: Train Loss=0.4244, Val Acc=89.13%
+Linear Epoch 50: Train Loss=0.3992, Val Acc=89.94%
+[daplankton_lab_ifcb] Linear accuracy: 89.10% | Val accuracy: 89.94%
+[daplankton_lab_ifcb] Eval-only accuracy: 11.41%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 87.74%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 51.46%
+Silhouette score: 0.116
+Prototype accuracy: 74.41%
+
+>>> Evaluating on 'daplankton_lab_cs' <<<
+[daplankton_lab_cs] Linear split: 6330 train, 1583 val, 2638 test
+Linear Epoch 5: Train Loss=1.8467, Val Acc=56.10%
+Linear Epoch 10: Train Loss=1.4112, Val Acc=66.77%
+Linear Epoch 15: Train Loss=1.1676, Val Acc=72.33%
+Linear Epoch 20: Train Loss=1.0119, Val Acc=74.73%
+Linear Epoch 25: Train Loss=0.9007, Val Acc=77.64%
+Linear Epoch 30: Train Loss=0.8180, Val Acc=79.15%
+Linear Epoch 35: Train Loss=0.7547, Val Acc=80.23%
+Linear Epoch 40: Train Loss=0.7022, Val Acc=81.30%
+Linear Epoch 45: Train Loss=0.6606, Val Acc=82.12%
+Linear Epoch 50: Train Loss=0.6249, Val Acc=82.94%
+[daplankton_lab_cs] Linear accuracy: 83.21% | Val accuracy: 82.94%
+[daplankton_lab_cs] Eval-only accuracy: 3.94%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 84.27%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 40.67%
+Silhouette score: 0.090
+Prototype accuracy: 65.09%
+
+>>> Evaluating on 'daplankton_lab_fc' <<<
+[daplankton_lab_fc] Linear split: 8548 train, 2137 val, 3561 test
+Linear Epoch 5: Train Loss=1.6359, Val Acc=57.37%
+Linear Epoch 10: Train Loss=1.2016, Val Acc=71.08%
+Linear Epoch 15: Train Loss=0.9842, Val Acc=75.20%
+Linear Epoch 20: Train Loss=0.8493, Val Acc=77.02%
+Linear Epoch 25: Train Loss=0.7626, Val Acc=79.22%
+Linear Epoch 30: Train Loss=0.6957, Val Acc=80.39%
+Linear Epoch 35: Train Loss=0.6449, Val Acc=81.52%
+Linear Epoch 40: Train Loss=0.6043, Val Acc=82.12%
+Linear Epoch 45: Train Loss=0.5712, Val Acc=82.78%
+Linear Epoch 50: Train Loss=0.5429, Val Acc=83.34%
+[daplankton_lab_fc] Linear accuracy: 84.44% | Val accuracy: 83.34%
+[daplankton_lab_fc] Eval-only accuracy: 5.20%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 85.14%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 44.54%
+Silhouette score: 0.105
+Prototype accuracy: 69.22%
+Results saved to fl_results/fed_unsup_simclr_tips_b14_wco_l4_ifcb_pml_tips_b14_2000C_1pct_seed1_20260528_165112.json

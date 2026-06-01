@@ -1,0 +1,123 @@
+# WHOI-Plankton (2006-2014, full collection) upload config.
+#
+# Source: https://darchive.mblwhoilibrary.org/collections/aad045e7-1fcf-5650-82ee-c62bd604d225
+# DOI: 10.1575/1912/7341
+# Code/benchmark repo: https://github.com/hsosik/WHOI-Plankton
+# Reference paper: Orenstein et al. 2015 (arXiv:1510.00745)
+#
+# Run prepare_whoi_plankton.py FIRST to populate `data_dir`, then:
+#   export HF_TOKEN=hf_...
+#   python upload_to_hf.py hf_upload_configs/whoi_plankton.yaml --dry-run
+#   python upload_to_hf.py hf_upload_configs/whoi_plankton.yaml
+
+# ============================================================
+# REQUIRED
+# ============================================================
+data_dir: /scratch/daniela/DEAL/Plankton/whoi-plankton/merged
+
+hf_dataset_name: whoi-plankton-2006-2014
+hf_org_name: danielaivanova
+
+# ============================================================
+# METADATA
+# ============================================================
+pretty_name: "WHOI-Plankton (2006-2014): annotated IFCB plankton images"
+
+description: |
+  WHOI-Plankton is a fine-grained classification dataset of microscopic marine
+  plankton images captured with an Imaging FlowCytobot (IFCB) at the Martha's
+  Vineyard Coastal Observatory (MVCO) by the Woods Hole Oceanographic
+  Institution (WHOI). This release aggregates all nine per-year subsets
+  (2006-2014) from the MBL/WHOI archive into a single ImageFolder, with
+  ~3.5 million expert-annotated images across 103 categories of phytoplankton,
+  microzooplankton, and other particle types.
+
+  The categories include named taxa (e.g. `Akashiwo`, `Chaetoceros_didymus`,
+  `Pseudonitzschia`), morphotype groupings (e.g. `Strombidium_morphotype1`,
+  `pennate_morphotype1`), and non-plankton categories (`bead`, `bubble`,
+  `detritus`, `mix`, `bad`). The dataset is heavily long-tailed: a small
+  number of common classes dominate, with rare classes containing only a few
+  hundred images.
+
+  Each image's filename encodes its acquisition timestamp and year, e.g.
+  `IFCB1_2009_127_165234_03914.png`. The year is preserved in the filename
+  for downstream temporal-split analyses but is not exposed as a separate
+  feature column.
+
+  Per-year archives were sourced from the MBL/WHOI archive
+  (DOI 10.1575/1912/7341) and merged via symlinks; the canonical dataset
+  card lives at the original WHOI archive.
+
+# License of the original WHOI archive entries states "All Items in WHOAS are
+# protected by original copyright, with all rights reserved, unless otherwise
+# indicated. WHOAS also supports the use of Creative Commons licenses." In
+# practice the project-oceania mirror tags this dataset as `mit`; we match
+# their choice for compatibility. Always cite Orenstein et al. 2015.
+license: mit
+
+source_url: "https://darchive.mblwhoilibrary.org/collections/aad045e7-1fcf-5650-82ee-c62bd604d225"
+
+citation_apa: |
+  Orenstein, E. C., Beijbom, O., Peacock, E. E., & Sosik, H. M. (2015).
+  WHOI-Plankton - A Large Scale Fine Grained Visual Recognition Benchmark
+  Dataset for Plankton Classification. CoRR, abs/1510.00745.
+  http://arxiv.org/abs/1510.00745
+
+  Sosik, H. M., Peacock, E. E., & Brownlee, E. F. (2014-2015). Annotated
+  Plankton Images - Data Set for Developing and Evaluating Classification
+  Methods. Woods Hole Oceanographic Institution.
+  https://hdl.handle.net/1912/7341 (DOI 10.1575/1912/7341).
+
+citation_bibtex: |
+  @article{orenstein2015whoi,
+    author  = {Eric C. Orenstein and Oscar Beijbom and Emily E. Peacock and Heidi M. Sosik},
+    title   = {WHOI-Plankton - {A} Large Scale Fine Grained Visual Recognition Benchmark Dataset for Plankton Classification},
+    journal = {CoRR},
+    volume  = {abs/1510.00745},
+    year    = {2015},
+    url     = {http://arxiv.org/abs/1510.00745},
+  }
+
+  @misc{sosik2014whoi,
+    title     = {Annotated Plankton Images - Data Set for Developing and Evaluating Classification Methods},
+    author    = {Sosik, Heidi M. and Peacock, Emily E. and Brownlee, Emily F.},
+    year      = {2014-2015},
+    publisher = {Woods Hole Oceanographic Institution},
+    doi       = {10.1575/1912/7341},
+  }
+
+paperswithcode_id: "whoi-plankton"
+arxiv_id: "1510.00745"
+
+# ============================================================
+# BEHAVIOR
+# ============================================================
+hf_private: true
+num_proc: 8
+push_to_hub_retries: 5
+# Enable a one-time integrity walk; 3.5M images so this takes ~30 minutes.
+# Worth running once to catch any corrupt files before pushing.
+check_image_file_integrity: false
+
+# ============================================================
+# DATASET CARD TAGS
+# ============================================================
+task_categories:
+  - image-classification
+task_ids:
+  - multi-class-image-classification
+annotations_creators:
+  - expert-generated
+language:
+  - en
+tags:
+  - plankton
+  - phytoplankton
+  - zooplankton
+  - microscopy
+  - ifcb
+  - imaging-flowcytobot
+  - whoi
+  - oceanography
+  - marine-biology
+  - fine-grained-classification

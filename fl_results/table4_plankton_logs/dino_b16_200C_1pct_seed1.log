@@ -1,0 +1,258 @@
+Device: cuda
+Configuration: {'dataset': 'wco_l4_ifcb_pml', 'dino_model': 'vit_base_patch16_dinov3', 'projection_dim': 128, 'image_size': 224, 'num_clients': 200, 'client_frac': 0.01, 'rounds': 20, 'local_epochs': 5, 'batch_size': 128, 'lr': 0.0001, 'wd': 0.0001, 'grad_clip': 1.0, 'linear_lr': 0.001, 'linear_wd': 0.0001, 'linear_bs': 256, 'linear_epochs': 50, 'linear_patience': 10, 'dirichlet_alpha': 0.3, 'balanced_partition': False, 'normalization': 'imagenet', 'seed': 1, 'backbone_tag': 'dino_b16', 'run_name': 'dino_b16_200C_1pct_seed1', 'verbose': False, 'progress_every': 20, 'eval_every': 0, 'save_test_embeddings': False, 'cpu': False, 'eval_datasets': ['wco_l4_ifcb_pml', 'syke_ifcb', 'syke_zooscan', 'plankto_share', 'daplankton_lab_ifcb', 'daplankton_lab_cs', 'daplankton_lab_fc'], 'tiny_root': './tiny', 'celeba_root': './celeba', 'device': device(type='cuda')}
+Loading DINOv3 backbone (vit_base_patch16_dinov3)...
+DINOv3 image feature dim: 768
+Using Dirichlet alpha=0.3 for non-IID partition...
+Using imbalanced Dirichlet partition
+Starting federated unsupervised SimCLR (CLIP backbone)...
+
+--- Round 1/20 ---
+Client 34: 4.8597
+Client 145: 4.7850
+Round avg loss: 4.8224 (Best: 4.8224)
+
+--- Round 2/20 ---
+Client 195: 4.8305
+Client 16: 4.8449
+Round avg loss: 4.8377 (Best: 4.8224)
+
+--- Round 3/20 ---
+Client 65: 4.8065
+Client 30: 4.8357
+Round avg loss: 4.8211 (Best: 4.8211)
+
+--- Round 4/20 ---
+Client 126: 4.7406
+Client 194: 4.9379
+Round avg loss: 4.8392 (Best: 4.8211)
+
+--- Round 5/20 ---
+Client 115: 4.7779
+Client 120: 4.7924
+Round avg loss: 4.7852 (Best: 4.7852)
+
+--- Round 6/20 ---
+Client 166: 4.8133
+Client 97: 4.7227
+Round avg loss: 4.7680 (Best: 4.7680)
+
+--- Round 7/20 ---
+Client 53: 4.8307
+Client 24: 4.7603
+Round avg loss: 4.7955 (Best: 4.7680)
+
+--- Round 8/20 ---
+Client 124: 4.9251
+Client 7: 4.8134
+Round avg loss: 4.8693 (Best: 4.7680)
+
+--- Round 9/20 ---
+Client 99: 4.7277
+Client 110: 4.8451
+Round avg loss: 4.7864 (Best: 4.7680)
+
+--- Round 10/20 ---
+Client 155: 4.8876
+Client 195: 4.4340
+Round avg loss: 4.6608 (Best: 4.6608)
+
+--- Round 11/20 ---
+Client 196: 4.7756
+Client 0: 4.9511
+Round avg loss: 4.8634 (Best: 4.6608)
+
+--- Round 12/20 ---
+Client 178: 4.7713
+Client 114: 4.8416
+Round avg loss: 4.8065 (Best: 4.6608)
+
+--- Round 13/20 ---
+Client 68: 4.9385
+Client 184: 4.8776
+Round avg loss: 4.9081 (Best: 4.6608)
+
+--- Round 14/20 ---
+Client 58: 4.7138
+Client 151: 4.8207
+Round avg loss: 4.7672 (Best: 4.6608)
+
+--- Round 15/20 ---
+Client 26: 4.8302
+Client 81: 4.8006
+Round avg loss: 4.8154 (Best: 4.6608)
+
+--- Round 16/20 ---
+Client 7: 4.4855
+Client 5: 4.8433
+Round avg loss: 4.6644 (Best: 4.6608)
+
+--- Round 17/20 ---
+Client 6: 4.9070
+Client 166: 4.4185
+Round avg loss: 4.6628 (Best: 4.6608)
+
+--- Round 18/20 ---
+Client 138: 4.7699
+Client 2: 4.9794
+Round avg loss: 4.8746 (Best: 4.6608)
+
+--- Round 19/20 ---
+Client 97: 4.3253
+Client 175: 4.7598
+Round avg loss: 4.5425 (Best: 4.5425)
+
+--- Round 20/20 ---
+Client 55: 4.8194
+Client 108: 4.9749
+Round avg loss: 4.8971 (Best: 4.5425)
+Projector checkpoint saved to fl_results/checkpoints/projector_dino_b16_wco_l4_ifcb_pml_dino_b16_200C_1pct_seed1_20260528_011007.pt
+
+Running final evaluations...
+
+>>> Evaluating on 'wco_l4_ifcb_pml' <<<
+[wco_l4_ifcb_pml] Linear split: 43525 train, 10882 val, 18135 test
+Linear Epoch 5: Train Loss=1.2693, Val Acc=73.20%
+Linear Epoch 10: Train Loss=0.8541, Val Acc=80.16%
+Linear Epoch 15: Train Loss=0.7105, Val Acc=82.68%
+Linear Epoch 20: Train Loss=0.6391, Val Acc=83.59%
+Linear Epoch 25: Train Loss=0.5917, Val Acc=84.51%
+Linear Epoch 30: Train Loss=0.5702, Val Acc=85.00%
+Linear Epoch 35: Train Loss=0.5514, Val Acc=85.30%
+Linear Epoch 40: Train Loss=0.5349, Val Acc=85.57%
+Linear Epoch 45: Train Loss=0.5248, Val Acc=85.57%
+Linear Epoch 50: Train Loss=0.5189, Val Acc=85.89%
+[wco_l4_ifcb_pml] Linear accuracy: 85.70% | Val accuracy: 85.89%
+[wco_l4_ifcb_pml] Eval-only accuracy: 1.33%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 81.76%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 31.12%
+Silhouette score: 0.067
+Prototype accuracy: 63.41%
+
+>>> Evaluating on 'syke_ifcb' <<<
+[syke_ifcb] Linear split: 30272 train, 7568 val, 12618 test
+Linear Epoch 5: Train Loss=0.8157, Val Acc=82.08%
+Linear Epoch 10: Train Loss=0.5179, Val Acc=87.63%
+Linear Epoch 15: Train Loss=0.4048, Val Acc=89.61%
+Linear Epoch 20: Train Loss=0.3454, Val Acc=90.58%
+Linear Epoch 25: Train Loss=0.3087, Val Acc=91.31%
+Linear Epoch 30: Train Loss=0.2842, Val Acc=91.79%
+Linear Epoch 35: Train Loss=0.2656, Val Acc=92.03%
+Linear Epoch 40: Train Loss=0.2526, Val Acc=92.57%
+Linear Epoch 45: Train Loss=0.2429, Val Acc=92.61%
+Linear Epoch 50: Train Loss=0.2361, Val Acc=92.93%
+[syke_ifcb] Linear accuracy: 93.07% | Val accuracy: 92.93%
+[syke_ifcb] Eval-only accuracy: 1.39%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 90.63%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 32.50%
+Silhouette score: 0.078
+Prototype accuracy: 68.13%
+
+>>> Evaluating on 'syke_zooscan' <<<
+[syke_zooscan] Linear split: 10896 train, 2724 val, 4597 test
+Linear Epoch 5: Train Loss=1.0201, Val Acc=78.45%
+Linear Epoch 10: Train Loss=0.7096, Val Acc=83.77%
+Linear Epoch 15: Train Loss=0.5664, Val Acc=86.38%
+Linear Epoch 20: Train Loss=0.4819, Val Acc=88.22%
+Linear Epoch 25: Train Loss=0.4255, Val Acc=89.43%
+Linear Epoch 30: Train Loss=0.3839, Val Acc=90.16%
+Linear Epoch 35: Train Loss=0.3517, Val Acc=90.90%
+Linear Epoch 40: Train Loss=0.3266, Val Acc=91.45%
+Linear Epoch 45: Train Loss=0.3065, Val Acc=92.11%
+Linear Epoch 50: Train Loss=0.2896, Val Acc=92.58%
+[syke_zooscan] Linear accuracy: 91.06% | Val accuracy: 92.58%
+[syke_zooscan] Eval-only accuracy: 3.72%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 90.56%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 34.09%
+Silhouette score: 0.068
+Prototype accuracy: 69.55%
+
+>>> Evaluating on 'plankto_share' <<<
+[plankto_share] Linear split: 25363 train, 6341 val, 10572 test
+Linear Epoch 5: Train Loss=2.0163, Val Acc=54.25%
+Linear Epoch 10: Train Loss=1.5085, Val Acc=62.50%
+Linear Epoch 15: Train Loss=1.3040, Val Acc=65.45%
+Linear Epoch 20: Train Loss=1.1873, Val Acc=67.37%
+Linear Epoch 25: Train Loss=1.1167, Val Acc=68.46%
+Linear Epoch 30: Train Loss=1.0644, Val Acc=69.07%
+Linear Epoch 35: Train Loss=1.0236, Val Acc=70.08%
+Linear Epoch 40: Train Loss=0.9990, Val Acc=70.51%
+Linear Epoch 45: Train Loss=0.9708, Val Acc=70.65%
+Linear Epoch 50: Train Loss=0.9479, Val Acc=71.22%
+[plankto_share] Linear accuracy: 71.80% | Val accuracy: 71.22%
+[plankto_share] Eval-only accuracy: 1.03%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 68.76%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 27.32%
+Silhouette score: 0.047
+Prototype accuracy: 52.18%
+
+>>> Evaluating on 'daplankton_lab_ifcb' <<<
+[daplankton_lab_ifcb] Linear split: 7909 train, 1978 val, 3294 test
+Linear Epoch 5: Train Loss=1.3319, Val Acc=80.23%
+Linear Epoch 10: Train Loss=0.8767, Val Acc=83.42%
+Linear Epoch 15: Train Loss=0.6827, Val Acc=86.15%
+Linear Epoch 20: Train Loss=0.5751, Val Acc=87.21%
+Linear Epoch 25: Train Loss=0.5057, Val Acc=87.97%
+Linear Epoch 30: Train Loss=0.4566, Val Acc=88.93%
+Linear Epoch 35: Train Loss=0.4194, Val Acc=89.94%
+Linear Epoch 40: Train Loss=0.3904, Val Acc=90.60%
+Linear Epoch 45: Train Loss=0.3668, Val Acc=90.75%
+Linear Epoch 50: Train Loss=0.3472, Val Acc=91.15%
+[daplankton_lab_ifcb] Linear accuracy: 89.62% | Val accuracy: 91.15%
+[daplankton_lab_ifcb] Eval-only accuracy: 10.47%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 87.19%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 55.98%
+Silhouette score: 0.131
+Prototype accuracy: 76.75%
+
+>>> Evaluating on 'daplankton_lab_cs' <<<
+[daplankton_lab_cs] Linear split: 6330 train, 1583 val, 2638 test
+Linear Epoch 5: Train Loss=1.8088, Val Acc=64.69%
+Linear Epoch 10: Train Loss=1.3311, Val Acc=73.72%
+Linear Epoch 15: Train Loss=1.0724, Val Acc=78.52%
+Linear Epoch 20: Train Loss=0.9142, Val Acc=80.23%
+Linear Epoch 25: Train Loss=0.8060, Val Acc=81.43%
+Linear Epoch 30: Train Loss=0.7283, Val Acc=83.13%
+Linear Epoch 35: Train Loss=0.6683, Val Acc=84.14%
+Linear Epoch 40: Train Loss=0.6205, Val Acc=84.84%
+Linear Epoch 45: Train Loss=0.5824, Val Acc=85.91%
+Linear Epoch 50: Train Loss=0.5504, Val Acc=86.10%
+[daplankton_lab_cs] Linear accuracy: 86.20% | Val accuracy: 86.10%
+[daplankton_lab_cs] Eval-only accuracy: 8.00%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 85.90%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 54.51%
+Silhouette score: 0.104
+Prototype accuracy: 72.44%
+
+>>> Evaluating on 'daplankton_lab_fc' <<<
+[daplankton_lab_fc] Linear split: 8548 train, 2137 val, 3561 test
+Linear Epoch 5: Train Loss=1.3638, Val Acc=69.07%
+Linear Epoch 10: Train Loss=0.9529, Val Acc=77.77%
+Linear Epoch 15: Train Loss=0.7707, Val Acc=81.98%
+Linear Epoch 20: Train Loss=0.6609, Val Acc=84.28%
+Linear Epoch 25: Train Loss=0.5902, Val Acc=85.49%
+Linear Epoch 30: Train Loss=0.5350, Val Acc=86.10%
+Linear Epoch 35: Train Loss=0.4961, Val Acc=87.08%
+Linear Epoch 40: Train Loss=0.4656, Val Acc=87.69%
+Linear Epoch 45: Train Loss=0.4404, Val Acc=88.25%
+Linear Epoch 50: Train Loss=0.4188, Val Acc=88.86%
+[daplankton_lab_fc] Linear accuracy: 87.78% | Val accuracy: 88.86%
+[daplankton_lab_fc] Eval-only accuracy: 7.27%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 86.13%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 47.32%
+Silhouette score: 0.111
+Prototype accuracy: 72.54%
+Results saved to fl_results/fed_unsup_simclr_dino_b16_wco_l4_ifcb_pml_dino_b16_200C_1pct_seed1_20260528_011007.json

@@ -1,0 +1,159 @@
+JSON not found at /home/daniela/mine/fedDINO/fl_results/fed_unsup_simclr_dino_b16_wco_l4_ifcb_pml_dino_b16_2000C_5pct_seed1_20260528_140329.json; creating a fresh one from the checkpoint config.
+Loading checkpoint: /home/daniela/mine/fedDINO/fl_results/checkpoints/projector_dino_b16_wco_l4_ifcb_pml_dino_b16_2000C_5pct_seed1_20260528_140329.pt
+Backbone tag: dino_b16  (module: fedDINO_all_eval)
+Eval datasets: ['wco_l4_ifcb_pml', 'syke_ifcb', 'syke_zooscan', 'plankto_share', 'daplankton_lab_ifcb', 'daplankton_lab_cs', 'daplankton_lab_fc']
+Device: cuda
+Loading DINOv3 backbone (vit_base_patch16_dinov3)...
+DINOv3 image feature dim: 768
+Loaded projector from checkpoint (rounds_completed=20).
+Will evaluate: ['wco_l4_ifcb_pml', 'syke_ifcb', 'syke_zooscan', 'plankto_share', 'daplankton_lab_ifcb', 'daplankton_lab_cs', 'daplankton_lab_fc']
+
+>>> Evaluating on 'wco_l4_ifcb_pml' <<<
+[wco_l4_ifcb_pml] Linear split: 43525 train, 10882 val, 18135 test
+Linear Epoch 5: Train Loss=1.2959, Val Acc=73.14%
+Linear Epoch 10: Train Loss=0.8695, Val Acc=80.00%
+Linear Epoch 15: Train Loss=0.7190, Val Acc=82.55%
+Linear Epoch 20: Train Loss=0.6433, Val Acc=83.90%
+Linear Epoch 25: Train Loss=0.5961, Val Acc=84.60%
+Linear Epoch 30: Train Loss=0.5744, Val Acc=85.26%
+Linear Epoch 35: Train Loss=0.5508, Val Acc=85.53%
+Linear Epoch 40: Train Loss=0.5389, Val Acc=85.74%
+Linear Epoch 45: Train Loss=0.5435, Val Acc=85.88%
+Linear Epoch 50: Train Loss=0.5299, Val Acc=86.13%
+[wco_l4_ifcb_pml] Linear accuracy: 85.85% | Val accuracy: 86.14%
+[wco_l4_ifcb_pml] Eval-only accuracy: 0.09%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 82.44%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 30.41%
+Silhouette score: 0.061
+Prototype accuracy: 65.52%
+
+>>> Evaluating on 'syke_ifcb' <<<
+[syke_ifcb] Linear split: 30272 train, 7568 val, 12618 test
+Linear Epoch 5: Train Loss=0.8256, Val Acc=82.29%
+Linear Epoch 10: Train Loss=0.5216, Val Acc=87.70%
+Linear Epoch 15: Train Loss=0.4053, Val Acc=89.69%
+Linear Epoch 20: Train Loss=0.3453, Val Acc=90.92%
+Linear Epoch 25: Train Loss=0.3070, Val Acc=91.77%
+Linear Epoch 30: Train Loss=0.2816, Val Acc=92.01%
+Linear Epoch 35: Train Loss=0.2645, Val Acc=92.31%
+Linear Epoch 40: Train Loss=0.2525, Val Acc=92.60%
+Linear Epoch 45: Train Loss=0.2428, Val Acc=92.71%
+Linear Epoch 50: Train Loss=0.2343, Val Acc=92.92%
+[syke_ifcb] Linear accuracy: 93.14% | Val accuracy: 92.92%
+[syke_ifcb] Eval-only accuracy: 0.82%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 91.04%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 33.38%
+Silhouette score: 0.076
+Prototype accuracy: 70.39%
+
+>>> Evaluating on 'syke_zooscan' <<<
+[syke_zooscan] Linear split: 10896 train, 2724 val, 4597 test
+Linear Epoch 5: Train Loss=1.0756, Val Acc=76.21%
+Linear Epoch 10: Train Loss=0.7479, Val Acc=83.41%
+Linear Epoch 15: Train Loss=0.5959, Val Acc=85.98%
+Linear Epoch 20: Train Loss=0.5044, Val Acc=87.92%
+Linear Epoch 25: Train Loss=0.4441, Val Acc=89.17%
+Linear Epoch 30: Train Loss=0.4005, Val Acc=90.05%
+Linear Epoch 35: Train Loss=0.3663, Val Acc=90.82%
+Linear Epoch 40: Train Loss=0.3398, Val Acc=91.26%
+Linear Epoch 45: Train Loss=0.3189, Val Acc=91.78%
+Linear Epoch 50: Train Loss=0.3006, Val Acc=92.25%
+[syke_zooscan] Linear accuracy: 90.93% | Val accuracy: 92.25%
+[syke_zooscan] Eval-only accuracy: 4.15%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 90.41%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 31.24%
+Silhouette score: 0.063
+Prototype accuracy: 68.78%
+
+>>> Evaluating on 'plankto_share' <<<
+[plankto_share] Linear split: 25363 train, 6341 val, 10572 test
+Linear Epoch 5: Train Loss=2.0310, Val Acc=54.11%
+Linear Epoch 10: Train Loss=1.5168, Val Acc=62.40%
+Linear Epoch 15: Train Loss=1.3082, Val Acc=65.45%
+Linear Epoch 20: Train Loss=1.1904, Val Acc=66.87%
+Linear Epoch 25: Train Loss=1.1169, Val Acc=68.13%
+Linear Epoch 30: Train Loss=1.0670, Val Acc=69.00%
+Linear Epoch 35: Train Loss=1.0275, Val Acc=69.67%
+Linear Epoch 40: Train Loss=0.9958, Val Acc=70.04%
+Linear Epoch 45: Train Loss=0.9698, Val Acc=70.67%
+Linear Epoch 50: Train Loss=0.9520, Val Acc=71.00%
+[plankto_share] Linear accuracy: 71.72% | Val accuracy: 71.00%
+[plankto_share] Eval-only accuracy: 2.23%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 68.95%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 30.16%
+Silhouette score: 0.046
+Prototype accuracy: 53.07%
+
+>>> Evaluating on 'daplankton_lab_ifcb' <<<
+[daplankton_lab_ifcb] Linear split: 7909 train, 1978 val, 3294 test
+Linear Epoch 5: Train Loss=1.3938, Val Acc=79.88%
+Linear Epoch 10: Train Loss=0.9066, Val Acc=83.87%
+Linear Epoch 15: Train Loss=0.6991, Val Acc=86.75%
+Linear Epoch 20: Train Loss=0.5856, Val Acc=87.56%
+Linear Epoch 25: Train Loss=0.5128, Val Acc=89.33%
+Linear Epoch 30: Train Loss=0.4614, Val Acc=89.64%
+Linear Epoch 35: Train Loss=0.4231, Val Acc=89.99%
+Linear Epoch 40: Train Loss=0.3929, Val Acc=90.80%
+Linear Epoch 45: Train Loss=0.3684, Val Acc=90.55%
+Linear Epoch 50: Train Loss=0.3486, Val Acc=91.10%
+[daplankton_lab_ifcb] Linear accuracy: 90.16% | Val accuracy: 91.10%
+[daplankton_lab_ifcb] Eval-only accuracy: 5.92%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 86.98%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 53.46%
+Silhouette score: 0.129
+Prototype accuracy: 78.05%
+
+>>> Evaluating on 'daplankton_lab_cs' <<<
+[daplankton_lab_cs] Linear split: 6330 train, 1583 val, 2638 test
+Linear Epoch 5: Train Loss=1.8323, Val Acc=65.51%
+Linear Epoch 10: Train Loss=1.3397, Val Acc=73.72%
+Linear Epoch 15: Train Loss=1.0736, Val Acc=79.28%
+Linear Epoch 20: Train Loss=0.9113, Val Acc=81.30%
+Linear Epoch 25: Train Loss=0.8012, Val Acc=82.38%
+Linear Epoch 30: Train Loss=0.7226, Val Acc=83.32%
+Linear Epoch 35: Train Loss=0.6622, Val Acc=84.21%
+Linear Epoch 40: Train Loss=0.6153, Val Acc=84.78%
+Linear Epoch 45: Train Loss=0.5763, Val Acc=85.60%
+Linear Epoch 50: Train Loss=0.5451, Val Acc=86.04%
+[daplankton_lab_cs] Linear accuracy: 86.05% | Val accuracy: 86.04%
+[daplankton_lab_cs] Eval-only accuracy: 6.52%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 85.63%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 56.48%
+Silhouette score: 0.099
+Prototype accuracy: 74.87%
+
+>>> Evaluating on 'daplankton_lab_fc' <<<
+[daplankton_lab_fc] Linear split: 8548 train, 2137 val, 3561 test
+Linear Epoch 5: Train Loss=1.4098, Val Acc=69.16%
+Linear Epoch 10: Train Loss=0.9853, Val Acc=78.47%
+Linear Epoch 15: Train Loss=0.7885, Val Acc=81.94%
+Linear Epoch 20: Train Loss=0.6764, Val Acc=83.95%
+Linear Epoch 25: Train Loss=0.6006, Val Acc=85.45%
+Linear Epoch 30: Train Loss=0.5470, Val Acc=86.34%
+Linear Epoch 35: Train Loss=0.5044, Val Acc=87.08%
+Linear Epoch 40: Train Loss=0.4707, Val Acc=87.83%
+Linear Epoch 45: Train Loss=0.4442, Val Acc=88.25%
+Linear Epoch 50: Train Loss=0.4244, Val Acc=88.86%
+[daplankton_lab_fc] Linear accuracy: 87.59% | Val accuracy: 88.86%
+[daplankton_lab_fc] Eval-only accuracy: 11.93%
+Running unsupervised k-NN evaluation...
+k-NN Top-1 accuracy: 86.52%
+Running unsupervised clustering evaluation...
+K-Means clustering accuracy (Hungarian matched): 48.30%
+Silhouette score: 0.111
+Prototype accuracy: 72.51%
+
+Added 7 eval_results rows and 7 unsup_results rows.
+Updated JSON: /home/daniela/mine/fedDINO/fl_results/fed_unsup_simclr_dino_b16_wco_l4_ifcb_pml_dino_b16_2000C_5pct_seed1_20260528_140329.json

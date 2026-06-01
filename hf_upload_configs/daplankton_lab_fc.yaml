@@ -1,0 +1,128 @@
+# DAPlankton_LAB / FlowCam (FC) subset upload config.
+#
+# Source: Batrakhanov et al. 2024 (arXiv:2402.05615).
+# Local data: /scratch/daniela/DEAL/Plankton/DAPlankton/DAPlankton_lab/FC
+# ImageFolder layout: 15 class dirs (phytoplankton cultures), 17,808 JPEGs.
+#
+# Split protocol: 60% train / 20% validation / 20% test, per-class shuffle
+# with random seed 24 (matches the SYKE-IFCB upload protocol for consistency
+# across this collection of HF uploads).
+
+# ============================================================
+# REQUIRED
+# ============================================================
+data_dir: /scratch/daniela/DEAL/Plankton/DAPlankton/DAPlankton_lab/FC
+
+hf_dataset_name: daplankton-lab-fc
+hf_org_name: danielaivanova
+
+# ============================================================
+# SPLIT PROTOCOL
+# ============================================================
+split_ratios: [0.6, 0.2, 0.2]
+split_random_seed: 24
+
+# ============================================================
+# METADATA
+# ============================================================
+pretty_name: "DAPlankton-LAB FlowCam"
+
+description: |
+  FlowCam (FC) imaging microscope subset of the DAPlankton_LAB benchmark
+  (Batrakhanov et al. 2024). Approximately 17,800 expert-labeled
+  single-specimen images across 15 phytoplankton species, captured from
+  mono-specific cultures. Because each image originates from a culture of
+  known species (verified by an expert), label noise and cross-class
+  contamination are negligible.
+
+  DAPlankton_LAB is designed as a benchmark for **fine-grained
+  domain adaptation** across plankton imaging instruments: the same 15
+  classes are imaged by three instruments (CS, FlowCam, IFCB), with each
+  instrument producing visually distinct images of the same species.
+  This release ships the FlowCam subset on its own; the matching
+  CytoSense and IFCB subsets are uploaded as separate datasets
+  (`daplankton-lab-cs`, `daplankton-lab-ifcb`) so each can be loaded
+  independently for cross-domain experiments.
+
+  This release provides **predefined train / validation / test splits**
+  so downstream code can reproduce a fixed splitting protocol without
+  re-implementing it:
+
+    - Per-class shuffle with random seed 24
+    - 60% train / 20% validation / 20% test
+    - No `min_N` / `max_N` class-size filtering applied
+
+  Each row contains `image` (PIL.Image JPEG) and `label` (HuggingFace
+  ClassLabel, 15 classes).
+
+  ## Classes (15 phytoplankton species)
+
+    Aphanizomenon flosaquae, Apocalathium malmogiense, Chrysotila
+    roscoffensis, Diatoma tenuis, Gymnodinium corollarium, Kryptoperidium
+    foliaceum, Levanderina fissa, Melosira arctica, Nephroselmis
+    pyriformis, Peridiniella catenata, Pseudopedinella sp.,
+    Rhinomonas nottbecki, Rhodomonas salina, Teleaulax acuta,
+    Tetraselmis sp.
+
+  ## Citation
+
+  Batrakhanov, D., Eerola, T., Kraft, K., Haraguchi, L., Lensu, L.,
+  Suikkanen, S., Camarena-Gomez, M. T., Seppälä, J., & Kälviäinen, H.
+  (2024). DAPlankton: Benchmark Dataset for Multi-instrument Plankton
+  Recognition via Fine-grained Domain Adaptation. arXiv:2402.05615.
+
+# Source-data license.
+license: cc-by-4.0
+
+source_url: "https://arxiv.org/abs/2402.05615"
+
+citation_apa: |
+  Batrakhanov, D., Eerola, T., Kraft, K., Haraguchi, L., Lensu, L.,
+  Suikkanen, S., Camarena-Gomez, M. T., Seppälä, J., & Kälviäinen, H.
+  (2024). DAPlankton: Benchmark Dataset for Multi-instrument Plankton
+  Recognition via Fine-grained Domain Adaptation. arXiv:2402.05615.
+
+citation_bibtex: |
+  @article{batrakhanov2024daplankton,
+    title   = {DAPlankton: Benchmark Dataset for Multi-instrument Plankton
+               Recognition via Fine-grained Domain Adaptation},
+    author  = {Batrakhanov, Daniel and Eerola, Tuomas and Kraft, Kaisa and
+               Haraguchi, Lumi and Lensu, Lasse and Suikkanen, Sanna and
+               Camarena-Gomez, Maria Teresa and Sepp{\"a}l{\"a}, Jukka and
+               K{\"a}lvi{\"a}inen, Heikki},
+    journal = {arXiv preprint arXiv:2402.05615},
+    year    = {2024}
+  }
+
+paperswithcode_id: ""
+arxiv_id: "2402.05615"
+
+# ============================================================
+# BEHAVIOR
+# ============================================================
+hf_private: true
+num_proc: 8
+push_to_hub_retries: 5
+check_image_file_integrity: false
+
+# ============================================================
+# DATASET CARD TAGS
+# ============================================================
+task_categories:
+  - image-classification
+task_ids:
+  - multi-class-image-classification
+annotations_creators:
+  - expert-generated
+language:
+  - en
+tags:
+  - plankton
+  - phytoplankton
+  - microscopy
+  - flowcam
+  - baltic-sea
+  - oceanography
+  - marine-biology
+  - domain-adaptation
+  - fine-grained-classification

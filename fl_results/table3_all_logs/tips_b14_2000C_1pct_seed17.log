@@ -1,0 +1,10 @@
+Loading checkpoint: /home/daniela/mine/fedDINO/fl_results/checkpoints/projector_tips_b14_cifar10_tips_b14_2000C_1pct_seed17_20260525_232002.pt
+Backbone tag: tips_b14  (module: fedTIPS_all_eval)
+Eval datasets: ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
+Device: cuda
+Loading TIPS backbone (google/tipsv2-b14)...
+Loading weights:   0%|          | 0/323 [00:00<?, ?it/s]Loading weights:  17%|█▋        | 55/323 [00:00<00:00, 547.67it/s]Loading weights:  34%|███▍      | 110/323 [00:00<00:00, 401.98it/s]Loading weights:  48%|████▊     | 154/323 [00:00<00:00, 390.46it/s]Loading weights:  64%|██████▍   | 206/323 [00:00<00:00, 393.75it/s]Loading weights:  84%|████████▎ | 270/323 [00:00<00:00, 457.95it/s]Loading weights:  98%|█████████▊| 318/323 [00:00<00:00, 458.60it/s]Loading weights: 100%|██████████| 323/323 [00:00<00:00, 446.45it/s]
+TIPS feature dim (mean-pool all tokens): 768
+Loaded projector from checkpoint (rounds_completed=20).
+Skipping (already in JSON): ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
+All requested eval datasets already present; nothing to do.

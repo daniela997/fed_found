@@ -1,0 +1,9 @@
+Loading checkpoint: /home/daniela/mine/fedDINO/fl_results/checkpoints/projector_clip_b16_cifar10_clip_b16_2000C_5pct_seed17_20260525_005417.pt
+Backbone tag: clip_b16  (module: fedCLIP_all_eval)
+Eval datasets: ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
+Device: cuda
+Loading CLIP backbone (ViT-B-16-quickgelu, pretrained=openai)...
+CLIP feature dim (mean-pool all 197 tokens, pre-proj): 768
+Loaded projector from checkpoint (rounds_completed=20).
+Skipping (already in JSON): ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
+All requested eval datasets already present; nothing to do.
