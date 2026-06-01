@@ -31,8 +31,6 @@ unbalanced Dirichlet partition with α = 0.3.
 ├── datasets_extra.py                        # HF dataset registry + adapter
 ├── eval_only.py                             # re-evaluate from a saved projector checkpoint
 ├── upload_to_hf.py                          # push an ImageFolder dataset to HuggingFace
-├── prepare_tiny_imagenet.py                 # one-off: build Tiny-IN ImageFolder
-├── prepare_whoi_plankton.py                 # one-off: build WHOI ImageFolder
 ├── run_table3_all_backbones.sh              # driver: setups (i) + (ii) grid (60 cells)
 ├── run_table4_plankton.sh                   # driver: setup (iii) grid (60 cells)
 ├── run_table4_oom_retry.sh                  # driver: re-run 1/GPU for OOM-prone cells
@@ -40,7 +38,6 @@ unbalanced Dirichlet partition with α = 0.3.
 ├── aggregate_table4_plankton.py             # aggregator for setup (iii)
 ├── visualise.ipynb                          # notebook with figures + analysis
 ├── hf_upload_configs/                       # YAML configs for HF dataset uploads
-├── scripts/                                 # one-off data-preparation utilities
 ├── figures/                                 # generated PDF figures for the paper
 └── fl_results/
     ├── table3_jsons.zip                     # all per-run JSONs for setups (i) + (ii)
@@ -69,7 +66,10 @@ ceiling for the larger backbones).
 ### 2. Datasets
 
 - **CIFAR-10 / CIFAR-100**: torchvision auto-downloads on first use.
-- **Tiny-ImageNet**: `python prepare_tiny_imagenet.py --root /path/to/tiny`
+- **Tiny-ImageNet**: download from
+  http://cs231n.stanford.edu/tiny-imagenet-200.zip and unpack so that
+  `train/<class>/<image>.JPEG` and `val/<class>/<image>.JPEG` exist; point
+  the trainers at it via `--tiny_root /path/to/tiny-imagenet-200`.
 - **OOD evaluation datasets** (WHOI, EuroSAT, Bone-Marrow, WikiArt): loaded
   on demand from HuggingFace via the registry in `datasets_extra.py`.
 - **Plankton datasets** (WCO L4 IFCB, SYKE-IFCB, SYKE-ZooScan, PlanktoShare,
