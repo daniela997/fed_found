@@ -25,19 +25,17 @@ Thumbs.db
 data/
 
 # ============================================================
-# Trained projector checkpoints (~230 MB; regenerate by re-running
-# the federated grids via run_table3_all_backbones.sh / run_table4_plankton.sh)
+# All FL outputs: trained projector checkpoints (~230 MB),
+# per-run JSON metrics, training logs, and bundled zips.
+# Treated as a deliverable for Zenodo / HF Releases, not for git.
+# Regenerate by re-running the drivers (run_table*.sh).
 # ============================================================
-fl_results/checkpoints/
+fl_results/
 
 # ============================================================
-# Intermediate/transient FL outputs
+# Generated figures (regenerate from visualise.ipynb)
 # ============================================================
-# Loose per-run JSONs (bundled into fl_results/table*_jsons.zip)
-fl_results/fed_unsup_simclr_*.json
-# Driver stdout/stderr captures (transient; per-run logs are in the table*_logs/ dirs)
-fl_results/*.out
-fl_results/archive_*/
+figures/
 
 # ============================================================
 # HuggingFace upload tooling (kept on disk; not part of the

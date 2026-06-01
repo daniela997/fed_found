@@ -35,18 +35,16 @@ unbalanced Dirichlet partition with α = 0.3.
 ├── run_table4_oom_retry.sh                  # driver: re-run 1/GPU for OOM-prone cells
 ├── aggregate_table3_compare.py              # aggregator for setups (i) + (ii)
 ├── aggregate_table4_plankton.py             # aggregator for setup (iii)
-├── visualise.ipynb                          # notebook with figures + analysis
-├── figures/                                 # generated PDF figures for the paper
-└── fl_results/
-    ├── table3_jsons.zip                     # all per-run JSONs for setups (i) + (ii)
-    ├── table4_jsons.zip                     # all per-run JSONs for setup (iii)
-    ├── table3_all_logs/                     # per-cell training logs
-    └── table4_plankton_logs/                # per-cell training logs
+└── visualise.ipynb                          # notebook with figures + analysis
 ```
 
-The `data/` and `fl_results/checkpoints/` directories are gitignored — they
-hold a ~1.1 GB dataset cache and ~230 MB of projector checkpoints respectively,
-both regeneratable.
+The following directories are gitignored and regenerated locally:
+
+- `data/` — torchvision dataset cache (~1.1 GB, auto-downloaded on first use).
+- `fl_results/` — checkpoints, per-run JSONs, training logs, bundled result
+  zips. Trained projector checkpoints can be reproduced from the drivers;
+  the JSON metric files for the paper are released separately (Zenodo).
+- `figures/` — PDF figures, regenerated from `visualise.ipynb`.
 
 ## Reproducing the experiments
 
@@ -154,12 +152,11 @@ ships predefined splits with 5 test-only classes for open-set evaluation.
 
 ## Figures
 
-`visualise.ipynb` produces all paper figures from the bundled JSON zips. Strip
-notebook outputs before re-committing:
+`visualise.ipynb` produces all paper figures from the bundled JSON zips
+(`fl_results/table3_jsons.zip`, `fl_results/table4_jsons.zip` — produced by
+the drivers, not tracked in git). Generated PDF figures land in `figures/`
+(also gitignored). Strip notebook outputs before re-committing:
 
 ```bash
 jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace visualise.ipynb
 ```
-
-Generated figures land in `figures/` (one per radial-bar setup, plus the
-combined views).

@@ -1,9 +1,0 @@
-Loading checkpoint: /home/daniela/mine/fedDINO/fl_results/checkpoints/projector_dino_b16_cifar10_dino_b16_2000C_1pct_seed17_20260523_182002.pt
-Backbone tag: dino_b16  (module: fedDINO_all_eval)
-Eval datasets: ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
-Device: cuda
-Loading DINOv3 backbone (vit_base_patch16_dinov3)...
-DINOv3 image feature dim: 768
-Loaded projector from checkpoint (rounds_completed=20).
-Skipping (already in JSON): ['cifar10', 'cifar100', 'tiny', 'whoi_plankton', 'eurosat', 'bone_marrow', 'wikiart_style']
-All requested eval datasets already present; nothing to do.
